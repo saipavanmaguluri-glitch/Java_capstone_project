@@ -1,9 +1,11 @@
 public class ReferenceBook extends LibraryItem{
-    ReferenceBook(String id,String title){
+    private String author;
+    ReferenceBook(String id,String title,String author){
         super(id,title);
+        this.author = author;
     }
     @Override
     public String getType(){
-        return "ReferenceBook";
+        return "REFERENCE";
     }
 }

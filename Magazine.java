@@ -6,7 +6,7 @@ public class Magazine extends LibraryItem implements Borrowable{
     }
     @Override
     public String getType(){
-        return "Magazine";
+        return "MAGAZINE";
     }
     @Override 
     public boolean canBorrow(){
