@@ -55,6 +55,11 @@ public class Main {
                         System.out.println("OK fine " + fine);
                         break;
 
+                    case "ADVANCE":
+                        library.advance(Integer.parseInt(parts[1]));
+                        System.out.println("OK today is day " + library.getCurDay());
+                        break;
+
                     case "INVENTORY":
                         List<LibraryItem> inv = library.inventory();
                         if (inv.isEmpty()) {
