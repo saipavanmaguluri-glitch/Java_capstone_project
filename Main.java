@@ -72,6 +72,7 @@ public class Main {
                         break;
                 }
             } catch (LibraryException e) {
+                // Step 11: Centralized exception handling
                 System.out.println("ERROR " + e.getMessage());
             }
         }
