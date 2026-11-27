@@ -60,6 +60,39 @@ public class Main {
                         System.out.println("OK today is day " + library.getCurDay());
                         break;
 
+                    case "SEARCH":
+                        List<LibraryItem> searchResults = library.search(parts[1]);
+                        if (searchResults.isEmpty()) {
+                            System.out.println("NONE");
+                        } else {
+                            for (LibraryItem item : searchResults) {
+                                System.out.println(item.getId() + "|" + item.getType() + "|" + item.getTitle());
+                            }
+                        }
+                        break;
+
+                    case "LOANS":
+                        List<Loan> memberLoans = library.loans(parts[1]);
+                        if (memberLoans.isEmpty()) {
+                            System.out.println("NONE");
+                        } else {
+                            for (Loan l : memberLoans) {
+                                System.out.println(l.getItem().getId() + "|" + l.getItem().getTitle() + "|" + l.getDueDay());
+                            }
+                        }
+                        break;
+
+                    case "OVERDUE":
+                        List<Loan> overdueLoans = library.overdue();
+                        if (overdueLoans.isEmpty()) {
+                            System.out.println("NONE");
+                        } else {
+                            for (Loan l : overdueLoans) {
+                                System.out.println(l.getItem().getId() + "|" + l.getMember().getId() + "|" + l.getDaysLate(library.getCurDay()) + "|" + l.getFine(library.getCurDay()));
+                            }
+                        }
+                        break;
+
                     case "INVENTORY":
                         List<LibraryItem> inv = library.inventory();
                         if (inv.isEmpty()) {
@@ -72,7 +105,6 @@ public class Main {
                         break;
                 }
             } catch (LibraryException e) {
-                // Step 11: Centralized exception handling
                 System.out.println("ERROR " + e.getMessage());
             }
         }
